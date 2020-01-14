@@ -18,7 +18,7 @@ stages:
 #First Stage on Ubuntu
 - stage: UbuntuQAEnvCheck
   jobs:
-  - job: InlineScripts
+  - job: FirstInlineScripts
 
     pool:
       vmImage: 'ubuntu-latest'
@@ -38,7 +38,7 @@ stages:
   dependsOn: UbuntuQAEnvCheck
   condition: succeeded()
   jobs:
-  - job: ExternalScripts
+  - job: SecondExternalScripts
     pool:
       vmImage: 'ubuntu-latest'
      # these variables only available in ExternalScripts job
@@ -70,7 +70,7 @@ stages:
   dependsOn: UbuntuQAEnvCheck
   condition: succeeded()
   jobs:
-  - job: InternalScripts
+  - job: ThirdInternalScripts
   #Windows Microsoft hosted image
     pool:
       vmImage: 'windows-latest'
@@ -91,7 +91,7 @@ stages:
   - WindowsQAEnvCheck
   condition: succeeded()
   jobs:
-  - job: ExternalScripts
+  - job: FourthExternalScripts
     pool:
       vmImage: 'windows-latest'
     steps:
@@ -111,7 +111,7 @@ stages:
   dependsOn: 
   - WindowsProdEnvCheck
   jobs:
-  - job: macOS
+  - job: FifthmacOS
     pool:
       vmImage: 'macOS-latest'
     steps:
@@ -129,7 +129,7 @@ stages:
   dependsOn: MacQACheck
   condition: succeeded()
   jobs:
-  - job: ExternalScripts
+  - job: SixthExternalScripts
     pool:
       vmImage: 'macOS-latest'
      # these variables only available in ExternalScripts job of MacQACheck
