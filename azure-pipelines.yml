@@ -1,19 +1,34 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+resources:
+  repositories:
+  # The name used to reference this repository in the checkout step
+  - repository: KangsBashCalcRepo 
+    type: github
+    endpoint: LoganGitHub
+    name: testlogmsci/bashCalc
+# The name used to reference this repository in the checkout step
+  - repository: KangsWindowsBatchRepo
+    type: github
+    endpoint: LoganGitHub
+    name: testlogmsci/winBatch
 
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
+#First Stage on Ubuntu
+- stage: UbuntuQAEnvCheck
+  jobs:
+  - job: InlineScripts
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+    pool:
+      vmImage: 'ubuntu-latest'
+    
+    steps:
+    - checkout: none
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo See https://aka.ms/yaml
+      displayName: 'Run a multi-line script'
