@@ -25,7 +25,7 @@ stages:
     
     steps:
     - checkout: none
-    - script: echo ${HELLO_WORLD}!
+    - script: echo "${HELLO_WORLD}!"
       displayName: 'Run a one-line script'
 
     - script: |
