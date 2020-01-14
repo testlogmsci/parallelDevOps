@@ -6,7 +6,7 @@ resources:
     endpoint: LoganGitHub
     name: testlogmsci/bashCalc
 # The name used to reference this repository in the checkout step
-  - repository: HelloWorldTestRepo
+  - repository: HelloWorldTestRepo2
     type: github
     endpoint: LoganGitHub
     name: testlogmsci/winBatch
@@ -95,15 +95,15 @@ stages:
     pool:
       vmImage: 'windows-latest'
     steps:
-    - checkout: HelloWorldTestRepo
+    - checkout: HelloWorldTestRepo2
     - task: BatchScript@1
       inputs:
-        filename: './power.bat'
+        filename: 'power.bat'
         arguments: '3 4'
 
     - task: BatchScript@1
       inputs:
-        filename: './calc.bat'
+        filename: 'calc.bat'
         arguments: '300 100'
 
 #Fifth Stage on Mac OS
