@@ -1,12 +1,12 @@
 resources:
   repositories:
   # The name used to reference this repository in the checkout step
-  - repository: KangsBashCalcRepo 
+  - repository: HelloWorldTestRepo 
     type: github
     endpoint: LoganGitHub
     name: testlogmsci/bashCalc
 # The name used to reference this repository in the checkout step
-  - repository: KangsWindowsBatchRepo
+  - repository: HelloWorldTestRepo
     type: github
     endpoint: LoganGitHub
     name: testlogmsci/winBatch
@@ -48,7 +48,7 @@ stages:
       OPERATION: 4
 
     steps:
-      - checkout: KangsBashCalcRepo
+      - checkout: HelloWorldTestRepo
       - task: Bash@3
         displayName: 'install bc'
         inputs:
